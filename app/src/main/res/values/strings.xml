@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NasTelonas</string>
+    <string name="titulo">Título</string>
+    <string name="sinopse_do_filme">sinopse do filme ...</string>
+    <string name="avaliacao">8.1/10</string>
+    <string name="duracao">120 min</string>
+    <string name="ano">2017</string>
+    <string name="poster">poster</string>
+    <string name="trailer">Trailer:</string>
+    <string name="trailer_titulo">trailer titulo</string>
+</resources>
