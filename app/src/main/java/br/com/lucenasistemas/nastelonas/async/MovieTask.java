@@ -39,7 +39,7 @@ public class MovieTask extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         ContentValues values = new ContentValues();
-        values.put("api_key","xxxx");
+        values.put("api_key","YOUR_API_KEY");
         values.put("language","pt-BR");
         values.put("append_to_response","videos");
 

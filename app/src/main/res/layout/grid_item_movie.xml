@@ -7,6 +7,7 @@
         android:id="@+id/movie_poster"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:transitionName="@string/poster"
         android:scaleType="fitXY"/>
 
 </FrameLayout>

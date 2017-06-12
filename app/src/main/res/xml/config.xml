@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Gêneros">
+        <CheckBoxPreference
+            android:key="@string/pref_acao"
+            android:defaultValue="@bool/acao"
+            android:title="@string/acao"
+            android:summaryOn="Buscar por filmes de ação"
+            android:summaryOff="Não buscar por filmes de ação"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_animacao"
+            android:defaultValue="@bool/animacao"
+            android:title="@string/animacao"
+            android:summaryOn="Buscar por filmes de animaçao"
+            android:summaryOff="Não buscar por filmes de animação"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_aventura"
+            android:defaultValue="@bool/aventura"
+            android:title="@string/aventura"
+            android:summaryOn="Buscar por filmes de aventura"
+            android:summaryOff="Não buscar por filmes de aventura"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_comedia"
+            android:defaultValue="@bool/comedia"
+            android:title="@string/comedia"
+            android:summaryOn="Buscar por filmes de comédia"
+            android:summaryOff="Não buscar por filmes de comédia"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_crime"
+            android:defaultValue="@bool/crime"
+            android:title="@string/crime"
+            android:summaryOn="Buscar por filmes de crime"
+            android:summaryOff="Não buscar por filmes de crime"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_documentario"
+            android:defaultValue="@bool/documentario"
+            android:title="@string/documentario"
+            android:summaryOn="Buscar por filmes de documentário"
+            android:summaryOff="Não buscar por filmes de documentário"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_drama"
+            android:defaultValue="@bool/drama"
+            android:title="@string/drama"
+            android:summaryOn="Buscar por filmes de drama"
+            android:summaryOff="Não buscar por filmes de drama"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_familia"
+            android:defaultValue="@bool/familia"
+            android:title="@string/familia"
+            android:summaryOn="Buscar por filmes de família"
+            android:summaryOff="Não buscar por filmes de família"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_fantasia"
+            android:defaultValue="@bool/fantasia"
+            android:title="@string/fantasia"
+            android:summaryOn="Buscar por filmes de fantasia"
+            android:summaryOff="Não buscar por filmes de fantasia"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_faroeste"
+            android:defaultValue="@bool/faroeste"
+            android:title="@string/faroeste"
+            android:summaryOn="Buscar por filmes de faroeste"
+            android:summaryOff="Não buscar por filmes de faroeste"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_ficcao"
+            android:defaultValue="@bool/ficcao"
+            android:title="@string/ficcao"
+            android:summaryOn="Buscar por filmes de ficção"
+            android:summaryOff="Não buscar por filmes de ficção"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_guerra"
+            android:defaultValue="@bool/guerra"
+            android:title="@string/guerra"
+            android:summaryOn="Buscar por filmes de guerra"
+            android:summaryOff="Não buscar por filmes de guerra"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_historia"
+            android:defaultValue="@bool/historia"
+            android:title="@string/historia"
+            android:summaryOn="Buscar por filmes de história"
+            android:summaryOff="Não buscar por filmes de história"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_misterio"
+            android:defaultValue="@bool/misterio"
+            android:title="@string/misterio"
+            android:summaryOn="Buscar por filmes de mistério"
+            android:summaryOff="Não buscar por filmes de mistério"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_musica"
+            android:defaultValue="@bool/musica"
+            android:title="@string/musica"
+            android:summaryOn="Buscar por filmes de música"
+            android:summaryOff="Não buscar por filmes de música"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_romance"
+            android:defaultValue="@bool/romance"
+            android:title="@string/romance"
+            android:summaryOn="Buscar por filmes de romance"
+            android:summaryOff="Não buscar por filmes de romance"
+            />
+        <CheckBoxPreference
+            android:key="@string/pref_terror"
+            android:defaultValue="@bool/terror"
+            android:title="@string/terror"
+            android:summaryOn="Buscar por filmes de terror"
+            android:summaryOff="Não buscar por filmes de terro"
+            />
+
+    </PreferenceCategory>
+</PreferenceScreen>

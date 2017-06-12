@@ -11,6 +11,7 @@ import java.util.List;
 
 import br.com.lucenasistemas.nastelonas.interfaces.DataHandler;
 import br.com.lucenasistemas.nastelonas.model.Movie;
+import br.com.lucenasistemas.nastelonas.wrapper.MoviesWrapper;
 
 /**
  * Created by Weverton on 08/06/2017.
@@ -21,20 +22,22 @@ public class JsonMoviesHandler implements DataHandler {
     public final String LOG_TAG = JsonMoviesHandler.class.getSimpleName();
 
     @Override
-    public List<Movie> jsonToModelList(String json) {
+    public MoviesWrapper jsonToModelList(String json) {
 
+        //Log.i(LOG_TAG,StringUtils.removerCaracteresEspeciais(json));
+        MoviesWrapper moviesWrapper =  new MoviesWrapper();
         List<Movie> movies = new ArrayList<>();
 
         try {
 
             JSONArray results = new JSONObject(json).getJSONArray("results");
-            int max = 12;
-            for (int i = 0; i < max; i++){
+            moviesWrapper.setTotal_pages(new JSONObject(json).getInt("total_pages"));
+            int max = 20;
+            for (int i = 0; i < results.length(); i++){
                 JSONObject jsonMovie = results.getJSONObject(i);
                 int id = (int) jsonMovie.get("id");
                 String title = (String) jsonMovie.get("title");
-                if (title == null || title.isEmpty() || id == 433422) {
-                    max++;
+                if(jsonMovie.isNull("poster_path")){
                     continue;
                 }
                 String poster = (String) jsonMovie.get("poster_path");
@@ -44,12 +47,13 @@ public class JsonMoviesHandler implements DataHandler {
                 movie.setPoster(poster);
                 movies.add(movie);
             }
+            moviesWrapper.setMovies(movies);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return movies;
+        return moviesWrapper;
     }
 
     @Override

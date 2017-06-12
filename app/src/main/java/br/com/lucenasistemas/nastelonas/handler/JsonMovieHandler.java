@@ -6,10 +6,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 import br.com.lucenasistemas.nastelonas.interfaces.DataHandler;
 import br.com.lucenasistemas.nastelonas.model.Movie;
+import br.com.lucenasistemas.nastelonas.wrapper.MoviesWrapper;
 
 /**
  * Created by Weverton on 08/06/2017.
@@ -25,20 +24,35 @@ class JsonMovieHandler implements DataHandler {
         Movie movie = new Movie();
 
         try {
-
+            int duracao = 0;
+            Double avaliacao = 0D;
+            String lancamento = "";
+            String sinopse = "";
+            String poster = "";
             JSONObject result = new JSONObject(json);
             int id = (int) result.get("id");
             String title = (String) result.get("title");
-            int duracao = (Integer) result.get("runtime");
-            Double avaliacao = (Double) result.get("vote_average");
-            String lancamento = (String) result.get("release_date");
-            String sinopse = (String) result.get("overview");
-            String poster = (String) result.get("poster_path");
+            if (!result.isNull("runtime"))
+                duracao = (Integer) result.get("runtime");
+            if (!result.isNull("vote_average"))
+                avaliacao = (Double) result.get("vote_average");
+            if (!result.isNull("release_date"))
+                lancamento = (String) result.get("release_date");
+            if (!result.isNull("overview"))
+                sinopse = (String) result.get("overview");
+            if (!result.isNull("poster_path"))
+            poster = (String) result.get("poster_path");
 
             JSONArray jsonVideo = result.getJSONObject("videos").getJSONArray("results");
 
-            String trailerKey = (String) jsonVideo.getJSONObject(0).get("key");
-            String trailerName = (String) jsonVideo.getJSONObject(0).get("name");
+            String trailerKey = "";
+            String trailerName = "";
+            try {
+                trailerKey = (String) jsonVideo.getJSONObject(0).get("key");
+                trailerName = (String) jsonVideo.getJSONObject(0).get("name");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             movie.setId(id);
             movie.setTitle(title);
             movie.setPoster(poster);
@@ -60,7 +74,7 @@ class JsonMovieHandler implements DataHandler {
     }
 
     @Override
-    public List<Movie> jsonToModelList(String json) {
+    public MoviesWrapper jsonToModelList(String json) {
 
         return null;
     }

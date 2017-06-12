@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import br.com.lucenasistemas.nastelonas.R;
 import br.com.lucenasistemas.nastelonas.async.MovieTask;
 import br.com.lucenasistemas.nastelonas.model.Movie;
+import br.com.lucenasistemas.nastelonas.util.StringUtils;
 
 public class DetailActivity extends AppCompatActivity implements MovieTask.onLoadMovie {
 
@@ -25,6 +27,7 @@ public class DetailActivity extends AppCompatActivity implements MovieTask.onLoa
     private TextView txtTrailerName;
     private ImageView imgPlay;
     private ImageView imgPoster;
+    private ViewGroup layoutTrailer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class DetailActivity extends AppCompatActivity implements MovieTask.onLoa
         txtTrailerName = (TextView) findViewById(R.id.txt_trailer_name);
         imgPlay = (ImageView) findViewById(R.id.img_play);
         imgPoster = (ImageView) findViewById(R.id.img_poster);
+        layoutTrailer = (ViewGroup) findViewById(R.id.layout_trailer);
         Movie movie = (Movie) getIntent().getSerializableExtra("movie");
 
         MovieTask task = new MovieTask(this,movie.getId());
@@ -53,8 +57,17 @@ public class DetailActivity extends AppCompatActivity implements MovieTask.onLoa
             txtDuracao.setVisibility(View.GONE);
         txtDuracao.setText(String.valueOf(movie.getDuracao()) + " min");
         txtAvaliacao.setText(String.valueOf(movie.getAvaliacao()));
-        txtSinopse.setText(movie.getSinopse());
-        txtTrailerName.setText(movie.getTrailerName());
+        if (StringUtils.isEmpty(movie.getSinopse()))
+            txtSinopse.setText("Sinopse não disponível");
+        else
+            txtSinopse.setText(movie.getSinopse());
+        if (StringUtils.isEmpty(movie.getTrailerName()))
+            layoutTrailer.setVisibility(View.GONE);
+        else
+            txtTrailerName.setText(movie.getTrailerName());
+
+
+
         Picasso.with(this).load(URL_POSTER + movie.getPoster()).resize(480,778).into(imgPoster);
         imgPlay.setOnClickListener(new View.OnClickListener() {
             @Override

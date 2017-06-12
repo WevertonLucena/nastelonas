@@ -15,6 +15,7 @@ import java.util.List;
 
 import br.com.lucenasistemas.nastelonas.R;
 import br.com.lucenasistemas.nastelonas.model.Movie;
+import br.com.lucenasistemas.nastelonas.util.ImageHelper;
 
 /**
  * Created by Weverton on 08/06/2017.
@@ -26,11 +27,13 @@ public final class MovieAdapter extends BaseAdapter {
     private List<Movie> movies = new ArrayList<>();
     private Context context;
     private final String URL_POSTER = "https://image.tmdb.org/t/p/w300_and_h450_bestv2/";
+    Picasso picasso;
 
     public MovieAdapter(Context context, List<Movie> movies) {
         this.movies = movies;
         this.context = context;
         mInflater = LayoutInflater.from(context);
+        picasso = Picasso.with(context);
     }
 
     @Override
@@ -60,7 +63,8 @@ public final class MovieAdapter extends BaseAdapter {
 
         poster = (ImageView) v.getTag(R.id.movie_poster);
         Movie movie = getItem(position);
-        Picasso.with(context).load(URL_POSTER + movie.getPoster()).resize(480,778).into(poster);
+
+        picasso.with(context).load(URL_POSTER + movie.getPoster()).into(poster);
 
         return v;
     }
